@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class ProductsComponent {
 
+  public firstProductItemName = "White Basmathi Rice";
+
+  public getPriceofRice() {
+    return 350;
+  }
+
+
 }
