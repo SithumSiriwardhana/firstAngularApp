@@ -13,53 +13,22 @@
                         <th scope="col">Created Date</th>
                         <th scope="col">Unit Price</th>
                         <th scope="col">Quantity in Kgs</th>
+                        <th scope="col">Availability</th>
                         <th scope="col">Product Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>{{firstProductItemName}}</td>
-                        <td>White Basmathi Rice imported from pakistan</td>
-                        <td>Jan 29, 2020</td>
-                        <td>Rs. 400</td>
-                        <td>{{getPriceofRice()}}</td>
+                    <tr *ngFor="let product of products">
+                        <th scope="row">{{product.productId}}</th>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.productDescription}}</td>
+                        <td>{{product.createdDate}}</td>
+                        <td>{{product.unitPrice}}</td>
+                        <td>{{product.quantity}}</td>
                         <td>
-                            <i class="fa fa-eye icon"></i>
-                            <i class="fa fa-pencil-square-o icon"></i>
+                            <p *ngIf="product.quantity <= 50">Lower Inventry Level</p>
+                            <p *ngIf="product.quantity > 50">Sufficient Inventry Level</p> 
                         </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Flour</td>
-                        <td>Super FIne Whole grain general Purpose flour</td>
-                        <td>Jan 29, 2020</td>
-                        <td>Rs. 190</td>
-                        <td>50</td>
-                        <td>
-                            <i class="fa fa-eye icon"></i>
-                            <i class="fa fa-pencil-square-o icon"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Sugar</td>
-                        <td>White sugar manufactured by Palwatte Factory</td>
-                        <td>Jan 29, 2020</td>
-                        <td>Rs. 200</td>
-                        <td>1200</td>
-                        <td>
-                            <i class="fa fa-eye icon"></i>
-                            <i class="fa fa-pencil-square-o icon"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Dhal</td>
-                        <td>Imported mysoor dhal from India</td>
-                        <td>Jan 29, 2020</td>
-                        <td>Rs. 200</td>
-                        <td>10</td>
                         <td>
                             <i class="fa fa-eye icon"></i>
                             <i class="fa fa-pencil-square-o icon"></i>
