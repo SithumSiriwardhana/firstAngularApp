@@ -15,6 +15,10 @@ table tbody tr td {
     cursor: pointer;
 }
 
+table tbody tr.active td {
+    background-color:lightgrey;
+}
+
 .icon {
     color: rgb(99, 98, 98);
     margin: 5px;

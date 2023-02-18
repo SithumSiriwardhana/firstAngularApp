@@ -18,20 +18,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of products let i = index" (click)="selectProduct(i)" [ngClass]="rowIndex == i ? 'active' : ''">
                         <th scope="row">{{product.productId}}</th>
                         <td>{{product.productName}}</td>
                         <td>{{product.productDescription}}</td>
-                        <td>{{product.createdDate}}</td>
-                        <td>{{product.unitPrice}}</td>
-                        <td>{{product.quantity}}</td>
+                        <td>{{product.createdDate | date:'MM/dd/yy'}}</td>
+                        <td style="text-align: right">{{product.unitPrice | currency:'Rs. ':'code'}}</td>
+                        <td style="text-align: right">{{product.quantity | number:'1.2-2'}}</td>
                         <td>
                             <p *ngIf="product.quantity <= 50">Lower Inventry Level</p>
-                            <p *ngIf="product.quantity > 50">Sufficient Inventry Level</p> 
+                            <p *ngIf="product.quantity > 50">Sufficient Inventry Level</p>
                         </td>
                         <td>
-                            <i class="fa fa-eye icon"></i>
-                            <i class="fa fa-pencil-square-o icon"></i>
+                            <button [disabled]="rowIndex != i" (click)="buttonClick()"><i class="fa fa-eye icon"></i></button>
+                            <button [disabled]="rowIndex != i" (click)="buttonClick()"><i class="fa fa-pencil-square-o icon"></i></button>    
                         </td>
                     </tr>
                 </tbody>
