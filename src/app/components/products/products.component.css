@@ -23,3 +23,18 @@ table tbody tr.active td {
     color: rgb(99, 98, 98);
     margin: 5px;
 }
+
+.product-header{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.btn-outline-primary:hover{
+    background-color: cornflowerblue !important;
+    border-color: cornflowerblue !important;
+
+}

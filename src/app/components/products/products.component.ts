@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+  
 export class ProductsComponent {
 
   // public firstProductItemName = "White Basmathi Rice";
@@ -22,34 +23,15 @@ export class ProductsComponent {
   //   return this.dhalStorage
   // }
 
-  public rowIndex: number = -1;
-  public isRowSelected: boolean = false;
-  
-  public selectProduct(selectedRow: number) {
+  public showAddProduct: boolean=false;
 
-      if (this.isRowSelected && this.rowIndex == selectedRow && this.clickingButton == true) {
-        this.isRowSelected = true;
-        this.rowIndex = selectedRow;
-      }
-      else if (this.isRowSelected && this.rowIndex == selectedRow) {
-        this.isRowSelected = false;
-        this.rowIndex = -1;
-      }
-      else {
-        this.isRowSelected = true;
-        this.rowIndex = selectedRow;
-    }
-    this.clickingButton = false;
-  }
- 
-
-  public clickingButton: boolean = false;
-
-  public buttonClick() {
-
-    return this.clickingButton = true;
+  public showAddProducts() {
+    this.showAddProduct = true;
   }
 
+  public hideAddProducts() {
+    this.showAddProduct = false;
+  }
 
   public products = [
     {
@@ -85,4 +67,33 @@ export class ProductsComponent {
       'productDescription': "Imported mysoor dhal from India"
     }
   ]
+
+  public rowIndex: number = -1;
+  public isRowSelected: boolean = false;
+
+  public selectProduct(selectedRow: number) {
+
+    if (this.isRowSelected && this.rowIndex == selectedRow && this.clickingButton == true) {
+      this.isRowSelected = true;
+      this.rowIndex = selectedRow;
+    }
+    else if (this.isRowSelected && this.rowIndex == selectedRow) {
+      this.isRowSelected = false;
+      this.rowIndex = -1;
+    }
+    else {
+      this.isRowSelected = true;
+      this.rowIndex = selectedRow;
+    }
+    this.clickingButton = false;
+  }
+
+
+  public clickingButton: boolean = false;
+
+  public buttonClick() {
+
+    return this.clickingButton = true;
+  }
+
 }
