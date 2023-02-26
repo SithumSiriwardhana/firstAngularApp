@@ -4,8 +4,10 @@
 
             <div class="product-header">
                 <h1>Product List</h1>
-                <button *ngIf="!showAddProduct" type="button" class="btn btn-outline-primary" (click)="showAddProducts()">Add Products</button>
-                <button *ngIf="showAddProduct" type="button" class="btn btn-outline-primary" (click)="hideAddProducts()">Close Products</button>
+                <button *ngIf="!showAddProduct" type="button" class="btn btn-outline-primary"
+                    (click)="showAddProducts()">Add Products</button>
+                <button *ngIf="showAddProduct" type="button" class="btn btn-outline-primary"
+                    (click)="hideAddProducts()">Close Products</button>
             </div>
 
             <table class="table">
@@ -45,9 +47,9 @@
             </table>
         </section>
 
-        <section class="col-md-5" *ngIf="showAddProduct">
+        <div class="col-md-5" *ngIf="showAddProduct">
             <app-add-product></app-add-product>
-        </section>
-        
+        </div>
+
     </div>
 </div>
