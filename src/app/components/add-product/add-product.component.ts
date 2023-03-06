@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ProductService } from 'src/app/service/product.service';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-add-product',
@@ -31,9 +33,23 @@ export class AddProductComponent {
   //   alert("ngDestroy Called");
   //   console.log("Triggered ngDestroy");
   // }
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private productService: ProductService,
+    private fb: FormBuilder
+  ) {}
 
-  onSubmit() { }
+  isDataUploading = false;
+
+  onSubmit() {
+    const values = this.productForm.value as unknown as Product;
+    values.createdDate = new Date().toDateString();
+    this.isDataUploading = true;
+    this.productService.addProduct(values as Product).subscribe((res) => {
+      debugger;
+      this.isDataUploading = false;
+      this.productForm.reset();
+    });
+  }
 
   productForm = this.fb.group({
     productName: ['', Validators.required],
@@ -45,12 +61,11 @@ export class AddProductComponent {
     batchNumber: ['', Validators.required],
     unitPrice: ['', [Validators.required, Validators.min(1)]],
     quantity: ['', [Validators.required, Validators.min(50)]],
-    createdDate: ['', Validators.required],
-    manufactureName: ['', Validators.required],
-    daysForDeliver: [
-      '',
-      [Validators.required, Validators.min(1), Validators.max(10)],
-    ],
+    // manufactureName: ['', Validators.required],
+    // daysForDeliver: [
+    //   '',
+    //   [Validators.required, Validators.min(1), Validators.max(10)],
+    // ],
   });
 
   get f() {
